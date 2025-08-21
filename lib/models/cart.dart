@@ -44,3 +44,13 @@ final Item item;
    (store as MyStore).cart.add(item);
   }
 }
+
+class RemoveMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  RemoveMutation(this.item);
+  @override
+  void perform() {
+    (store as MyStore).cart.remove(item);
+  }
+}

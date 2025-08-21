@@ -24,51 +24,71 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  
-
   @override
   Widget build(BuildContext context) {
     final CartModel _cart = (VxState.store as MyStore).cart;
+
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        "\$${_cart.totalPrice}".text.xl5.color(context.theme.colorScheme.secondary).make(),
-        30.widthBox,
-        ElevatedButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Buying not supported yet.").text.make()),
-            );
-          },
-          style: ButtonStyle(
-            backgroundColor:
-             MaterialStateProperty.all(context.theme.colorScheme.secondary),),
-          child: "Buy".text.color(Colors.white).make()).w32(context),
-      ],),
+          VxConsumer<MyStore>(
+            notifications: {},
+            mutations: {RemoveMutation},
+            builder: (context, store, status) {
+              return "\$${_cart.totalPrice}"
+                  .text
+                  .xl5
+                  .color(context.theme.colorScheme.secondary)
+                  .make();
+            },
+          ),
+          30.widthBox,
+          ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Buying not supported yet.")),
+              );
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                context.theme.colorScheme.secondary,
+              ),
+            ),
+            child: "Buy".text.color(Colors.white).make(),
+          ).w32(context),
+        ],
+      ),
     );
   }
 }
 
-class _CartList extends StatelessWidget{
-  
+
+class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CartModel _cart = (VxState.store as MyStore).cart;
-    return _cart.items.isEmpty? "No items in cart".text.xl3.makeCentered(): ListView.builder(
-      itemCount: _cart.items.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.remove_circle_outline),
-          onPressed: () {
-            _cart.remove(_cart.items[index]);
-            // setState(() {});
-          },
-        ),
-        title: _cart.items[index].name.text.make(),
-      ),
+
+    return VxBuilder<MyStore>(
+      mutations: {RemoveMutation},
+      builder: (context, store, status) {
+        return _cart.items.isEmpty
+            ? "No items in cart".text.xl3.makeCentered()
+            : ListView.builder(
+                itemCount: _cart.items.length,
+                itemBuilder: (context, index) => ListTile(
+                  leading: Icon(Icons.done),
+                  trailing: IconButton(
+                    icon: Icon(Icons.remove_circle_outline),
+                    onPressed: () {
+                      RemoveMutation(_cart.items[index]); // removes from cart
+                    },
+                  ),
+                  title: _cart.items[index].name.text.make(),
+                ),
+              );
+      },
     );
   }
 }
