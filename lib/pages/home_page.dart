@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyTheme.darkBluishColor,
       child: Icon(CupertinoIcons.cart, color: Colors.white),
     ).badge(
-      color: Vx.red500,
+      color: Vx.white,
       size: 22,
       count: _cart.items.length,
       textStyle: TextStyle(
