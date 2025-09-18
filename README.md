@@ -2,15 +2,22 @@
 
 A new Flutter project.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## Login Page
+![Login page](https://github.com/user-attachments/assets/a3850a5d-ce35-4b4b-9f4f-c00fb121dbe6)
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Home Page
+![Home page](https://github.com/user-attachments/assets/6e6d5a26-b806-4d6c-af5a-a2906e5d7d0a)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Product Details
+![Product details](https://github.com/user-attachments/assets/db276baf-5f78-443d-8bd8-fee3c0ea42bc)
+
+---
+
+## Cart Page
+![Cart page](https://github.com/user-attachments/assets/9fae78d9-7cf9-4e12-bb25-92ba2e8c95a7)
